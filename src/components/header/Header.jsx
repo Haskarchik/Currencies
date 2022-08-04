@@ -1,10 +1,32 @@
-import React from 'react'
-import HeaderCurrenciesLine from './HeaderCurrenciesLine'
+import React, { useEffect, useState } from 'react';
+import HeaderCurrenciesLine from './HeaderCurrenciesLine';
+import axios from 'axios'
+const Header = () => {
 
-export default function Header() {
-  return (
-    <div>
-        <HeaderCurrenciesLine/>
-    </div>
-  )
+    const [rates, setRates] = useState([]);
+
+    useEffect(() => {
+        axios
+          .get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json")
+          .then((response) => {
+            setRates(response.data);
+          });
+      }, []);
+
+
+
+    return (
+        <div>
+            <div className="header-title">
+                Currencies
+            </div>
+            <div className="header-currency-row">
+            <HeaderCurrenciesLine currency={rates} name={'USD'}/>
+            <HeaderCurrenciesLine currency={rates} name={'EUR'}/>
+
+            </div>
+        </div>
+    );
 }
+
+export default Header;
