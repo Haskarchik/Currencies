@@ -1,17 +1,14 @@
-import ConvertotBlock from './components/content/convertor/ConvertotBlock';
-import Header from './components/header/header';
-import './styles/app.css'
+import ConvertotBlock from "./components/content/convertor/ConvertotBlock";
+import Header from "./components/header/header";
+import "./styles/app.css";
 
 function App() {
-
-  return(
+  return (
     <>
-    <Header/>
-    <ConvertotBlock/>
+      <Header />
+      <ConvertotBlock />
     </>
-    ) 
-    
-  
+  );
 }
 
 export default App;

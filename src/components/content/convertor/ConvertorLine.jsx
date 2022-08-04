@@ -18,25 +18,24 @@ export default function ConvertorLine(props) {
 
   return (
     <div className="convertorLine">
-    <div className="group">
-      <input
-        className="input"
-        type="text"
-        value={props.amount}
-        onChange={(ev) => props.onAmountChange(ev.target.value)}
-      />
-      <select
-        className="select"
-        value={props.currency}
-        onChange={(ev) => props.onCurrencyChange(ev.target.value)}
-      >
-        {props.currencies.map((el) => (
-          <option value={el.cc}>{el.cc}</option>
-        ))}
-      </select>
+      <div className="group">
+        <input
+          className="input"
+          type="text"
+          value={props.amount}
+          onChange={(ev) => props.onAmountChange(ev.target.value)}
+        />
+        <select
+          className="select"
+          value={props.currency}
+          onChange={(ev) => props.onCurrencyChange(ev.target.value)}
+        >
+          {props.currencies.map((el) => (
+            <option value={el.cc}>{el.cc}</option>
+          ))}
+        </select>
       </div>
       <div className="text-name">{htmlName}</div>
-    
     </div>
   );
 }
