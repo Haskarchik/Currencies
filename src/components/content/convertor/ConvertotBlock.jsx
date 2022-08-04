@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from "react";
 import ConvertorLine from "./ConvertorLine";
 import axios from "axios";
+import "../../../styles/convertor.css";
 
 export default function ConvertotBlock() {
-
   const [rates, setRates] = useState([]);
   const [Amount, setAmount] = useState(0);
   const [Amount1, setAmount1] = useState(0);
@@ -19,7 +19,7 @@ export default function ConvertotBlock() {
     cc: "UAH",
     exchangedate: "05.08.2022",
   });
-  
+
   useEffect(() => {
     axios
       .get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json")
@@ -36,7 +36,6 @@ export default function ConvertotBlock() {
       init();
     }
   }, [rates]);
-
 
   function format(number) {
     return number.toFixed(4);
@@ -62,7 +61,6 @@ export default function ConvertotBlock() {
     setAmount2(format((Amount * calculate(Currency)) / calculate(Currency2)));
     setCurrency(Currency);
     setAmount1(format((Amount * calculate(Currency)) / calculate(Currency1)));
-    
   }
 
   function handleAmount1Change(Amount1) {
@@ -90,28 +88,33 @@ export default function ConvertotBlock() {
   }
 
   return (
-    <div>
-      <ConvertorLine
-        onAmountChange={handleAmount1Change}
-        onCurrencyChange={handleCurrency1Change}
-        currencies={rates}
-        amount={Amount1}
-        currency={Currency1}
-      />
-      <ConvertorLine
-        onAmountChange={handleAmount2Change}
-        onCurrencyChange={handleCurrency2Change}
-        currencies={rates}
-        amount={Amount2}
-        currency={Currency2}
-      />
-      <ConvertorLine
-        onAmountChange={handleAmountChange}
-        onCurrencyChange={handleCurrencyChange}
-        currencies={rates}
-        amount={Amount}
-        currency={Currency}
-      />
+    <div className="content">
+ 
+      <div className="container">
+        <div className="convertor-block">
+          <ConvertorLine
+            onAmountChange={handleAmount1Change}
+            onCurrencyChange={handleCurrency1Change}
+            currencies={rates}
+            amount={Amount1}
+            currency={Currency1}
+          />
+          <ConvertorLine
+            onAmountChange={handleAmount2Change}
+            onCurrencyChange={handleCurrency2Change}
+            currencies={rates}
+            amount={Amount2}
+            currency={Currency2}
+          />
+          <ConvertorLine
+            onAmountChange={handleAmountChange}
+            onCurrencyChange={handleCurrencyChange}
+            currencies={rates}
+            amount={Amount}
+            currency={Currency}
+          />
+        </div>
+      </div>
     </div>
   );
 }

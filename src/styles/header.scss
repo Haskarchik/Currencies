@@ -1,0 +1,36 @@
+.header{
+    width: 100%;
+    height: 100%;
+    background-color: #0A1371;
+    color: #ffff;
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
+.header-title{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    padding: 25px;
+    text-align: center;
+    font-size: 28px;
+    
+}
+.header-currency-row{
+    font-size: 28px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.current-currency{
+    display: flex;
+
+}
+.currency-name{
+    padding-right: 10px;
+}
+@media (max-width:425px) {
+    .header-currency-row{
+        font-size: 25px;
+    }
+}

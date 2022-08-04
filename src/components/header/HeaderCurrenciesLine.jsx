@@ -11,8 +11,8 @@ export default function HeaderCurrenciesLine(props) {
     });
   return (
     <div className='current-currency'>
-        {props.name}
-        {count}
+        <div className="currency-name">{props.name}</div>
+        <div className="currency-count">{count}</div>
         
     </div>
   )
